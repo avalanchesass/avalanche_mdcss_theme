@@ -1,0 +1,27 @@
+{
+  "name": "avalanchesass_mdcss_theme",
+  "description": "mdcss theme for avalanche",
+  "keywords": [
+    "mdcss",
+    "mdcss-theme"
+  ],
+  "version": "1.0.0",
+  "author": "Markus Oberlehner",
+  "homepage": "https://github.com/avalanchesass/avalanchesass_mdcss_theme",
+  "license": "GPL v2",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/avalanchesass/avalanchesass_mdcss_theme"
+  },
+  "bugs": {
+    "url": "https://github.com/avalanchesass/avalanchesass_mdcss_theme/issues"
+  },
+  "dependencies": {
+    "ejs": "^2.4.1",
+    "object-assign": "^4.0.1"
+  },
+  "engines": {
+    "iojs": ">=2.0.0",
+    "node": ">=0.12.0"
+  }
+}
