@@ -8,6 +8,10 @@ html {
   box-sizing: border-box;
 }
 
+body {
+  padding: 1.5em;
+}
+
 *,
 *::before,
 *::after {
@@ -130,31 +134,111 @@ table table {
 
 img {
   display: inline-block;
+  max-width: 100%;
+  height: auto;
 }
 
 figure {
-  margin: 0;
+  position: relative;
+  margin-right: 0;
+  margin-left: 0;
+  padding: 2em;
+  background: #efefef;
+}
+
+figure::before {
+  position: absolute;
+  top: 0.55rem;
+  right: 2rem;
+  color: #949494;
+  content: 'EXAMPLE';
+  font-weight: 700;
+  font-size: 0.65em;
+}
+
+figure + figure {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+figure + figure::before {
+  display: none;
+}
+
+figure iframe {
+  width: 100%;
+  border: none;
 }
 
 @media (min-width: 63.9375em) {
-  body {
+  .c-layout {
     display: flex;
   }
-  .c-main-header {
-    min-width: 17em;
-    max-width: 20%;
+  .c-layout__sidebar {
+    position: relative;
+    padding-right: 3em;
+    min-width: 20%;
+  }
+  .c-layout__sidebar::after {
+    position: absolute;
+    top: 0;
+    right: 1.5em;
+    bottom: 0;
+    border-right: 1px solid #efefef;
+    content: '';
+  }
+  .c-layout__main {
+    max-width: 80%;
   }
 }
 
-.c-section + .c-section {
+.c-section:not(:first-child) {
   margin-top: 3em;
   padding-top: 3em;
   border-top: 1px solid #efefef;
 }
 
-.c-section .c-section + .c-section {
+.c-section .c-section:not(:first-child) {
   padding-top: 0;
   border-top: none;
+}
+
+.c-main-menu {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.c-main-menu .c-main-menu {
+  font-size: 0.9em;
+}
+
+.c-main-menu__item--1:not(:first-child) {
+  margin-top: 2em;
+}
+
+.c-main-menu__link,
+.c-main-menu__link:visited {
+  color: #222;
+}
+
+.c-main-menu__link:hover,
+.c-main-menu__link:focus {
+  text-decoration: underline;
+}
+
+.c-main-menu__link {
+  display: block;
+  text-decoration: none;
+}
+
+.c-main-menu__link--1 {
+  font-weight: 700;
+}
+
+.c-main-menu__item--1:not(:first-child) > .c-main-menu__link--1,
+.c-main-menu__item--2 .c-main-menu__link {
+  margin-top: 0.5em;
 }
 
 /* Colors */
@@ -229,7 +313,6 @@ pre {
 /* Code blocks */
 pre {
   overflow: auto;
-  margin: 0.5em 0;
   padding: 1em;
   border-radius: 0.3em;
 }

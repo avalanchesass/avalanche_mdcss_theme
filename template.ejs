@@ -15,51 +15,52 @@
     }); %>
   </head>
   <body>
-    <header class="c-main-header">
-      <img src="<%= opts.logo %>" alt="<%= opts.title %>">
-      <nav class="c-main-nav c-main-header__nav">
-        <% menu(list, 1) %>
-      </nav>
-    </header>
-    <main class="c-main-content">
-      <% sections(list, 2) %>
-    </main>
-    <%
+    <div class="c-layout">
+      <header class="c-main-header c-layout__sidebar">
+        <img src="<%= opts.logo %>" alt="<%= opts.title %>">
+        <nav class="c-main-nav c-main-header__nav">
+          <% menu(list, 1) %>
+        </nav>
+      </header>
+      <main class="c-main-content c-layout__main">
+        <% sections(list, 2) %>
+      </main>
+      <%
 
-      function menu(children, depth) {
-        if (depth < 3) { %>
-          <ul class="c-main-menu">
-            <% children.sort(sort).forEach(function (child) {
-              if (child.name) { %>
-                <li class="c-main-menu__item">
-                  <a href="#<%- child.name %>" class="c-main-menu__link"><%= child.title %></a>
-                  <% if (child.children) menu(child.children, depth + 1) %>
-                </li>
-              <% }
-            }); %>
-          </ul>
-        <% }
-      }
+        function menu(children, depth) {
+          if (depth < 3) { %>
+            <ul class="c-main-menu c-main-menu--<%= depth %>">
+              <% children.sort(sort).forEach(function (child) {
+                if (child.name) { %>
+                  <li class="c-main-menu__item c-main-menu__item--<%= depth %>">
+                    <a href="#<%- child.name %>" class="c-main-menu__link c-main-menu__link--<%= depth %>"><%= child.title %></a>
+                    <% if (child.children) menu(child.children, depth + 1) %>
+                  </li>
+                <% }
+              }); %>
+            </ul>
+          <% }
+        }
 
-      function sections(children, depth) {
-        depth = Math.max(Math.min(depth, 6), 1);
+        function sections(children, depth) {
+          depth = Math.max(Math.min(depth, 6), 1);
 
-        children.sort(sort).forEach(function (child) { %>
-          <section<% if (child.name) { %> id="<%= child.name %>"<% } %> class="c-section">
-            <% if (child.title) { %><%- '<h' + depth + '>' %><%= child.title %><%- '</h' + depth + '>' %><% } %>
-            <div class="c-section__inner">
-              <%- child.content %>
-              <% if (child.children) sections(child.children, depth + 1) %>
-            </div>
-          </section>
-        <% });
-      }
+          children.sort(sort).forEach(function (child) { %>
+            <section<% if (child.name) { %> id="<%= child.name %>"<% } %> class="c-section">
+              <% if (child.title) { %><%- '<h' + depth + '>' %><%= child.title %><%- '</h' + depth + '>' %><% } %>
+              <div class="c-section__inner">
+                <%- child.content %>
+                <% if (child.children) sections(child.children, depth + 1) %>
+              </div>
+            </section>
+          <% });
+        }
 
-      function sort(childA, childB) {
-        return (childA.order || 0) - (childB.order || 0);
-      }
+        function sort(childA, childB) {
+          return (childA.order || 0) - (childB.order || 0);
+        }
 
-    %>
+      %>
     <script src="prism.js"></script>
     <script src="examples.js"></script>
     <script src="script.js"></script>
