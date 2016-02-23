@@ -118,18 +118,14 @@ dl {
   padding-left: 1.5em;
 }
 
-li {
-  ul,
-  ol,
-  dl {
-    margin-top: 0;
-  }
+li ul,
+li ol,
+li dl {
+  margin-top: 0;
 }
 
-table {
-  table {
-    margin-top: 0;
-  }
+table table {
+  margin-top: 0;
 }
 
 img {
