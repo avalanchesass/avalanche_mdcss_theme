@@ -242,23 +242,31 @@ figure iframe {
 }
 
 /* Colors */
-.colors {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+.c-color {
+  padding: 0;
+  background: transparent;
 }
 
-.color {
+.c-color::before {
+  display: none;
+}
+
+.c-color__inner {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.c-color__color {
   margin-bottom: 20px;
   width: 160px;
   vertical-align: top;
 }
 
-.color:not(:last-child) {
+.c-color__color:not(:last-child) {
   margin-right: 40px;
 }
 
-.color-swatch {
+.c-color__swatch {
   margin-bottom: 10px;
   width: 160px;
   height: 160px;
@@ -269,13 +277,13 @@ figure iframe {
   line-height: 160px;
 }
 
-.color-property {
+.c-color__property {
   padding: 0 10px;
   font-weight: 700;
   font-size: 80%;
 }
 
-.color-property::before {
+.c-color__property::before {
   display: inline-block;
   min-width: 3em;
   content: attr(data-name) ':\00a0';
