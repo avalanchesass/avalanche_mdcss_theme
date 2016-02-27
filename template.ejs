@@ -30,7 +30,7 @@
         function menu(children, depth) {
           if (depth < 3) { %>
             <ul class="c-main-menu c-main-menu--<%= depth %>">
-              <% children.sort(sort).forEach(function (child) {
+              <% children.forEach(function (child) {
                 if (child.name) { %>
                   <li class="c-main-menu__item c-main-menu__item--<%= depth %>">
                     <a href="#<%- child.name %>" class="c-main-menu__link c-main-menu__link--<%= depth %>"><%= child.title %></a>
@@ -45,7 +45,7 @@
         function sections(children, depth) {
           depth = Math.max(Math.min(depth, 6), 1);
 
-          children.sort(sort).forEach(function (child) { %>
+          children.forEach(function (child) { %>
             <section<% if (child.name) { %> id="<%= child.name %>"<% } %> class="c-section">
               <% if (child.title) { %><%- '<h' + depth + '>' %><%= child.title %><%- '</h' + depth + '>' %><% } %>
               <div class="c-section__inner">
@@ -54,10 +54,6 @@
               </div>
             </section>
           <% });
-        }
-
-        function sort(childA, childB) {
-          return (childA.order || 0) - (childB.order || 0);
         }
 
       %>
