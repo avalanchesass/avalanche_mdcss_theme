@@ -20,6 +20,16 @@
     "ejs": "^2.4.1",
     "object-assign": "^4.0.1"
   },
+  "devDependencies": {
+    "del": "^2.2.0",
+    "eyeglass": "^0.8.2",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-css-globbing": "^0.1.7",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.1.0",
+    "normalize-scss": "^4.0.3"
+  },
   "engines": {
     "iojs": ">=2.0.0",
     "node": ">=0.12.0"
