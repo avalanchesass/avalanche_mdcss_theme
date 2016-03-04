@@ -1,3 +1,9 @@
+.c-layout {
+  margin: 0 auto;
+  padding: 1.5em;
+  max-width: 90em;
+}
+
 @media (min-width: map-get($breakpoints, l)) {
   .c-layout {
     display: flex;

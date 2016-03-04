@@ -1,0 +1,21 @@
+.c-main-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2em;
+  max-height: 85em;
+  height: 100vh;
+  background: map-get($cs, a);
+}
+
+.c-main-header__container {
+  padding: 2em;
+  max-width: 42em;
+  text-align: center;
+}
+
+.c-main-header__description {
+  margin-top: 0;
+  color: map-get($cs-contrast, a);
+  font-size: map-get($font-sizes, xl);
+}

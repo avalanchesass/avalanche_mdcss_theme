@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title><%- opts.title %></title>
+    <meta name="description" content="<%- opts.description %>"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <% opts.css.forEach(function (href) {
@@ -15,13 +16,18 @@
     }); %>
   </head>
   <body>
+    <header class="c-main-header">
+      <div class="c-main-header__container">
+        <img src="<%= opts.logo %>" alt="<%= opts.title %>" class="c-main-header__logo">
+        <p class="c-main-header__description"><%- opts.description %></p>
+      </div>
+    </header>
     <div class="c-layout">
-      <header class="c-main-header c-layout__sidebar">
-        <img src="<%= opts.logo %>" alt="<%= opts.title %>">
+      <div class="c-layout__sidebar">
         <nav class="c-main-nav c-main-header__nav">
           <% menu(list, 1) %>
         </nav>
-      </header>
+      </div>
       <main class="c-main-content c-layout__main">
         <% sections(list, 2) %>
       </main>
