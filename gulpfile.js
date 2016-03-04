@@ -20,6 +20,8 @@ var eyeglass     = require('eyeglass');
 var gulp         = require('gulp');
 var autoprefixer = require('gulp-autoprefixer');
 var cssGlobbing  = require('gulp-css-globbing');
+var cssnano      = require('gulp-cssnano');
+var minifyCss    = require('gulp-minify-css');
 var rename       = require('gulp-rename');
 var sass         = require('gulp-sass');
 
@@ -43,6 +45,8 @@ gulp.task('styles:build', ['clean:styles'], function () {
     }))
     .pipe(sass(eyeglass(config.sassOptions)).on('error', sass.logError))
     .pipe(autoprefixer())
+    .pipe(minifyCss())
+    .pipe(cssnano())
     .pipe(rename(config.styles.destinationFileName))
     .pipe(gulp.dest(config.styles.destination));
 });

@@ -1,0 +1,45 @@
+.c-color {
+  padding: 0;
+  background: transparent;
+  &::before {
+    display: none;
+  }
+}
+
+.c-color__inner {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.c-color__color {
+  margin-bottom: 2em;
+  width: 10em;
+  vertical-align: top;
+  &:not(:last-child) {
+    margin-right: 2.5em;
+  }
+}
+
+.c-color__swatch {
+  margin-bottom: 0.625em;
+  width: 10em;
+  height: 10em;
+  border-radius: 50%;
+  box-shadow: inset 0 0 1px 0 currentColor;
+  text-align: center;
+  font-weight: 700;
+  line-height: 10em;
+}
+
+.c-color__property {
+  padding: 0 0.625em;
+  font-weight: 700;
+  font-size: 80%;
+}
+
+.c-color__property::before {
+  display: inline-block;
+  min-width: 3em;
+  content: attr(data-name) ':\00a0';
+  font-weight: 300;
+}

@@ -1,0 +1,21 @@
+@media (min-width: map-get($breakpoints, l)) {
+  .c-layout {
+    display: flex;
+  }
+  .c-layout__sidebar {
+    position: relative;
+    padding-right: 3em;
+    min-width: 20%;
+  }
+  .c-layout__sidebar::after {
+    position: absolute;
+    top: 0;
+    right: 1.5em;
+    bottom: 0;
+    border-right: 1px solid #efefef;
+    content: '';
+  }
+  .c-layout__main {
+    max-width: 80%;
+  }
+}

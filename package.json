@@ -17,6 +17,10 @@
     "url": "https://github.com/avalanchesass/avalanchesass_mdcss_theme/issues"
   },
   "dependencies": {
+    "avalanchesass_function_breakpointmax": "avalanchesass/avalanche_function_breakpointmax#dev-3.0.0",
+    "avalanchesass_function_map_get_deep": "avalanchesass/avalanche_function_map_get_deep#dev-3.0.0",
+    "avalanchesass_base_box_sizing_reset": "avalanchesass/avalanche_base_box_sizing_reset#dev-3.0.0",
+    "avalanchesass_base_typography": "avalanchesass/avalanche_base_typography#dev-3.0.0",
     "ejs": "^2.4.1",
     "object-assign": "^4.0.1"
   },
@@ -26,6 +30,8 @@
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-css-globbing": "^0.1.7",
+    "gulp-cssnano": "^2.0.1",
+    "gulp-minify-css": "^1.2.3",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.1.0",
     "normalize-scss": "^4.0.3"
