@@ -1,0 +1,36 @@
+.c-main-menu {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  .c-main-menu {
+    font-size: 0.9em;
+  }
+}
+
+.c-main-menu__item--1 {
+  &:not(:first-child) {
+    margin-top: 2em;
+  }
+}
+
+.c-main-menu__link {
+  display: block;
+  text-decoration: none;
+  &,
+  &:visited {
+    color: #222;
+  }
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
+.c-main-menu__item--1:not(:first-child) > .c-main-menu__link--1,
+.c-main-menu__item--2 .c-main-menu__link {
+  margin-top: 0.5em;
+}
+
+.c-main-menu__link--1 {
+  font-weight: 700;
+}

@@ -1,0 +1,16 @@
+.c-section,
+.c-section__inner {
+  @include base-typography-whitespace();
+}
+
+.c-section {
+  &:not(:first-child) {
+    margin-top: 3em;
+    padding-top: 3em;
+    border-top: 1px solid #efefef;
+  }
+  .c-section:not(:first-child) {
+    padding-top: 0;
+    border-top: none;
+  }
+}

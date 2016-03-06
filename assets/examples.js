@@ -3,7 +3,8 @@ examples.lang = {
 		var colors = pre.parentNode.insertBefore(document.createElement('div'), pre);
 		var lines = value.trim().split(/\n+/);
 
-		colors.className = 'colors';
+		pre.parentNode.className = 'c-color';
+		colors.className = 'c-color__inner';
 
 		lines.map(parseLine).map(parseColor).forEach(colors.appendChild, colors);
 
@@ -22,11 +23,11 @@ examples.lang = {
 		function parseColor(color) {
 			var colorNode = document.createElement('div');
 
-			colorNode.className = 'color';
+			colorNode.className = 'c-color__color';
 
 			var swatchNode = colorNode.appendChild(document.createElement('div'));
 
-			swatchNode.className = 'color-swatch';
+			swatchNode.className = 'c-color__swatch';
 
 			swatchNode.style.backgroundColor = color.color;
 
@@ -41,7 +42,7 @@ examples.lang = {
 			Object.keys(color).filter(function (key) { return key !== 'color' }).forEach(function (key) {
 				var propertyNode = colorNode.appendChild(document.createElement('div'));
 
-				propertyNode.className = 'color-property';
+				propertyNode.className = 'c-color__property';
 
 				propertyNode.setAttribute('data-name', key);
 
@@ -131,10 +132,8 @@ examples.lang = {
 			}
 		}
 
-		iwin.addEventListener('load', resize);
-
-		resize();
-
-		setInterval(resize, 334);
+		iwin.addEventListener('load', function () {
+			resize();
+		});
 	}
 };

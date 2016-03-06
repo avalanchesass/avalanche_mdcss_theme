@@ -1,0 +1,33 @@
+figure {
+  position: relative;
+  margin-right: 0;
+  margin-left: 0;
+  padding: 2em;
+  background: #efefef;
+  &::before {
+    position: absolute;
+    top: 0.55rem;
+    right: 2rem;
+    color: #949494;
+    content: 'EXAMPLE';
+    font-weight: 700;
+    font-size: 0.65em;
+  }
+  &:not(:first-of-type) {
+    margin-top: 0;
+    padding-top: 0;
+    &::before {
+      display: none
+    }
+  }
+  iframe {
+    width: 100%;
+    border: none;
+  }
+}
+
+img {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+}

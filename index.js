@@ -30,24 +30,32 @@ module.exports = function (themeopts) {
         bodycss: 'background:none;border:0;clip:auto;display:block;height:auto;margin:0;padding:16px;position:static;width:auto'
     }, themeopts.examples);
 
-    var compareDocs = function (a, b) {
-        if (a.sort < b.sort)
-            return -1;
-        else if (a.sort > b.sort)
-            return 1;
-        else 
-            return 0;
+    var orderDocs = function (docs) {
+        docs.forEach(function (value, index) {
+            // Make the source order the default order.
+            // Because there are problems when sorting values with a default
+            // order of 0 we set the index (=source order) as default order.
+            // That way items with a explicitly set order could be lower ranked
+            // than other items with no order (default 0) so we add a big
+            // numnber to the explicitly set order to ensure it is higher than
+            // the source order index.
+            value.order = value.order ? value.order + 999999 : index;
+        });
+        docs.sort(function (a, b) {
+            if (a.order < b.order)
+                return -1;
+            else if (a.order > b.order)
+                return 1;
+            else
+                return 0;
+        });
     };
 
-    var sortDocs = function (docs) {
-        docs.sort(compareDocs);
-    };
-
-    var sortDocsRecursive = function (docs) {
-        sortDocs(docs);
+    var orderDocsRecursive = function (docs) {
+        orderDocs(docs);
         docs.forEach(function (doc) {
             if (doc.children) {
-                sortDocsRecursive(doc.children);
+                orderDocsRecursive(doc.children);
             }
         });
     };
@@ -70,7 +78,7 @@ module.exports = function (themeopts) {
                 else {
                     // set examples options
                     docs.opts = ext({}, docs.opts, docs.themeopts);
-                    sortDocsRecursive(docs.list);
+                    orderDocsRecursive(docs.list);
                     // set compiled template
                     docs.template = ejs.compile(contents)(docs);
 

@@ -1,76 +1,70 @@
 <!doctype html>
-<title><%- opts.title %></title>
-<meta charset="utf-8">
-<% opts.css.forEach(function (href) {
-	%><link href="<%= href %>" rel="stylesheet"><%
-}); %>
-<script>examples=<%- JSON.stringify(opts.examples) %>;</script>
-<% opts.js.forEach(function (src) {
-	%><script src="<%= src %>"></script><%
-}); %>
-<body>
-<header>
-	<nav>
-		<img src="<%= opts.logo %>" alt="<%= opts.title %>">
-		<% menu(list, 1) %>
-	</nav>
-</header>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title><%- opts.title %></title>
+    <meta name="description" content="<%- opts.description %>"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<main>
-	<% sections(list, 2) %>
-	<footer>Last modified <%- lastModified() %>
-</main>
-<script src="prism.js"></script>
-<script src="examples.js"></script>
-<script src="script.js"></script>
-<%
+    <% opts.css.forEach(function (href) {
+      %><link href="<%= href %>" rel="stylesheet"><%
+    }); %>
+    <script>examples=<%- JSON.stringify(opts.examples) %>;</script>
+    <% opts.js.forEach(function (src) {
+      %><script src="<%= src %>"></script><%
+    }); %>
+  </head>
+  <body>
+    <header class="c-main-header">
+      <div class="c-main-header__container">
+        <img src="<%= opts.logo %>" alt="<%= opts.title %>" class="c-main-header__logo">
+        <p class="c-main-header__description"><%- opts.description %></p>
+      </div>
+    </header>
+    <div class="c-layout">
+      <div class="c-layout__sidebar">
+        <nav class="c-main-nav c-main-header__nav">
+          <% menu(list, 1) %>
+        </nav>
+      </div>
+      <main class="c-main-content c-layout__main">
+        <% sections(list, 2) %>
+      </main>
+      <%
 
-function menu(children, depth) {
-	%>
-	<ul>
-		<% if (depth < 3) children.sort(sort).forEach(function (child) {
-			if (child.name) {
-				%>
-				<li>
-					<a href="#<%- child.name %>"><span><%= child.title %></span></a>
-					<% if (child.children) menu(child.children, depth + 1) %>
-				</li>
-				<%
-			}
-		}); %>
-	</ul>
-	<%
-}
+        function menu(children, depth) {
+          if (depth < 3) { %>
+            <ul class="c-main-menu c-main-menu--<%= depth %>">
+              <% children.forEach(function (child) {
+                if (child.name) { %>
+                  <li class="c-main-menu__item c-main-menu__item--<%= depth %>">
+                    <a href="#<%- child.name %>" class="c-main-menu__link c-main-menu__link--<%= depth %>"><%= child.title %></a>
+                    <% if (child.children) menu(child.children, depth + 1) %>
+                  </li>
+                <% }
+              }); %>
+            </ul>
+          <% }
+        }
 
-function sections(children, depth) {
-	depth = Math.max(Math.min(depth, 6), 1);
+        function sections(children, depth) {
+          depth = Math.max(Math.min(depth, 6), 1);
 
-	children.sort(sort).forEach(function (child) {
-		%>
-		<section<% if (child.name) { %> id="<%= child.name %>"<% } %>>
-			<% if (child.title) { %><%- '<h' + depth + '>' %><%= child.title %><%- '</h' + depth + '>' %><% } %>
-			<div>
-				<%- child.content %>
-				<% if (child.children) sections(child.children, depth + 1) %>
-			</div>
-		</section>
-		<%
-	});
-}
+          children.forEach(function (child) { %>
+            <section<% if (child.name) { %> id="<%= child.name %>"<% } %> class="c-section">
+              <% if (child.title) { %><%- '<h' + depth + ' class="c-h' + depth + '">' %><%= child.title %><%- '</h' + depth + '>' %><% } %>
+              <div class="c-section__inner">
+                <%- child.content %>
+                <% if (child.children) sections(child.children, depth + 1) %>
+              </div>
+            </section>
+          <% });
+        }
 
-function lastModified() {
-	var now = new Date();
-
-	var day = 'Sunday Monday Tuesday Wednesday Thursday Friday Saturday'.split(' ')[now.getDay()];
-
-	var month = 'January February March April May June July August September October November December'.split(' ')[now.getMonth()];
-
-	return day + ', ' + now.getDate() + ' ' + month + ' ' + now.getFullYear() + ' ' + now.getHours() + ':' + ('0' + now.getMinutes()).slice(-2);
-}
-
-function sort(childA, childB) {
-	return (childA.order || 0) - (childB.order || 0);
-}
-
-%>
-</body>
+      %>
+    <script src="prism.js"></script>
+    <script src="examples.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
