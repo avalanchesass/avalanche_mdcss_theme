@@ -53,7 +53,7 @@
 
           children.forEach(function (child) { %>
             <section<% if (child.name) { %> id="<%= child.name %>"<% } %> class="c-section">
-              <% if (child.title) { %><%- '<h' + depth + '>' %><%= child.title %><%- '</h' + depth + '>' %><% } %>
+              <% if (child.title) { %><%- '<h' + depth + ' class="c-h' + depth + '">' %><%= child.title %><%- '</h' + depth + '>' %><% } %>
               <div class="c-section__inner">
                 <%- child.content %>
                 <% if (child.children) sections(child.children, depth + 1) %>

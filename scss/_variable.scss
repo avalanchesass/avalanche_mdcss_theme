@@ -145,15 +145,6 @@ section: variable_typography
 <div style="font-size: #{map-get($font-sizes, xxxl)};">map-get($font-sizes, xxxl)</div>
 */
 
-$font-sizes: map-merge($font-sizes, (
-  h1: map-get($font-sizes, xxxl),
-  h2: map-get($font-sizes, xxl),
-  h3: map-get($font-sizes, xl),
-  h4: map-get($font-sizes, l),
-  h5: map-get($font-sizes, m),
-  h6: map-get($font-sizes, m),
-));
-
 /*---
 title:   Fonts
 name:    variable_typography_fonts
@@ -170,20 +161,6 @@ Font sizes and weights are defined globally to ensure a consistent look.
  */
 $fonts: (
   a: (
-    family: "'Helvetica Neue', sans-serif",
-    weights: (
-      thin:        100,
-      extra-light: 200,
-      light:       300,
-      normal:      400,
-      medium:      500,
-      semi-bold:   600,
-      bold:        700,
-      extra-bold:  800,
-      ultra-bold:  900,
-    ),
-  ),
-  b: (
     family: "'Helvetica Neue', sans-serif",
     weights: (
       thin:        100,

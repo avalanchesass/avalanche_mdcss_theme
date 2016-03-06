@@ -2,25 +2,19 @@
   "name": "avalanchesass_mdcss_theme",
   "description": "mdcss theme for avalanche",
   "keywords": [
-    "mdcss",
+    "avalanchesass-package",
     "mdcss-theme"
   ],
   "version": "1.0.0",
   "author": "Markus Oberlehner",
-  "homepage": "https://github.com/avalanchesass/avalanchesass_mdcss_theme",
+  "homepage": "https://github.com/avalanchesass/avalanche_mdcss_theme",
   "license": "GPL v2",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/avalanchesass/avalanchesass_mdcss_theme"
-  },
-  "bugs": {
-    "url": "https://github.com/avalanchesass/avalanchesass_mdcss_theme/issues"
-  },
   "dependencies": {
-    "avalanchesass_function_breakpointmax": "avalanchesass/avalanche_function_breakpointmax#dev-3.0.0",
-    "avalanchesass_function_map_get_deep": "avalanchesass/avalanche_function_map_get_deep#dev-3.0.0",
-    "avalanchesass_base_box_sizing_reset": "avalanchesass/avalanche_base_box_sizing_reset#dev-3.0.0",
-    "avalanchesass_base_typography": "avalanchesass/avalanche_base_typography#dev-3.0.0",
+    "avalanchesass_function_breakpointmax": "^3.0.0",
+    "avalanchesass_function_map_get_deep": "^3.0.0",
+    "avalanchesass_base_box_sizing_reset": "^3.0.0",
+    "avalanchesass_base_typography": "^3.0.0",
+    "avalanchesass_component_hn": "^3.0.0",
     "ejs": "^2.4.1",
     "object-assign": "^4.0.1"
   },
@@ -35,6 +29,13 @@
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.1.0",
     "normalize-scss": "^4.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/avalanchesass/avalanche_mdcss_theme"
+  },
+  "bugs": {
+    "url": "https://github.com/avalanchesass/avalanche_mdcss_theme/issues"
   },
   "engines": {
     "iojs": ">=2.0.0",
